@@ -16,7 +16,7 @@ def product_create_view(request):
         form = ProductForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('product-list')
+            return redirect('product_list')
     return render(request, 'invApp/product_form.html', {'form': form})
 
 
@@ -34,7 +34,7 @@ def product_update_view(request, product_id):
         form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             form.save()
-            return redirect('product-list')
+            return redirect('product_list')
     return render(request, 'invApp/product_form.html', {'form': form, 'product': product})
         
 # Delete View
@@ -43,6 +43,6 @@ def product_delete_view(request, product_id):
     
     if request.method == 'POST':
         product.delete()
-        return redirect('product-list')
+        return redirect('product_list')
     
     return render(request, 'invApp/product_confirm_delete.html', {'product': product})
